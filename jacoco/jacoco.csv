@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.model,WebDriverType,15,760,0,2,2,37,4,6,4,5
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.drivers,WebDriverFactory,7,43,0,0,3,14,1,2,1,2
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.test,WebTestExecutor,110,48,13,7,23,10,13,2,3,2
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.data,TestDataProvider,1611,49,0,0,5,2,5,2,5,2
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.utilities,Duration,182,124,15,9,32,31,17,6,6,5
+PDXSE-GTF (Generic Test Framework),org.pdxse.gtf.web,WebNavigator,146,134,7,5,34,39,9,7,3,7

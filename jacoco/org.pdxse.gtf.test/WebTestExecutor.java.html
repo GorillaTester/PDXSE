@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>WebTestExecutor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PDXSE-GTF (Generic Test Framework)</a> &gt; <a href="index.html" class="el_package">org.pdxse.gtf.test</a> &gt; <span class="el_source">WebTestExecutor.java</span></div><h1>WebTestExecutor.java</h1><pre class="source lang-java linenums">package org.pdxse.gtf.test;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.pdxse.gtf.model.WebDriverType;
+import org.pdxse.gtf.web.WebNavigator;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: ryandavis
+ * Date: 3/17/13
+ * Time: 12:27 PM
+ * To change this template use File | Settings | File Templates.
+ */
+<span class="pc bpc" id="L16" title="1 of 2 branches missed.">public class WebTestExecutor {</span>
+
+<span class="fc" id="L18">    private static final Logger logger = Logger.getLogger(WebTestExecutor.class);</span>
+
+    /**
+     * Test Executor compatible with Ryan's test.html page that determines the Browser Name based on the contents of
+     * the Browser Name and User Agent fields.
+     * (test.html @http://pojorisin.github.com/pojorisin/test/test.html)
+     *
+     * @param webDriverType Enum representing the WebDriver instance to be created
+     * @param url URL to the test.html page
+     * @return String containing the name of the Browser
+     */
+    public static String determineWebBrowserType(WebDriverType webDriverType, String url){
+
+<span class="nc" id="L31">        WebNavigator navigator = new WebNavigator(webDriverType);</span>
+<span class="nc" id="L32">        navigator.navigateBrowserTo(url);</span>
+
+<span class="nc" id="L34">        WebElement browserName = navigator.getWebElement(By.id(&quot;browserNameTextBoxID&quot;));</span>
+<span class="nc" id="L35">        String name = browserName.getAttribute(&quot;value&quot;);</span>
+
+<span class="nc" id="L37">        WebElement userAgent = navigator.getWebElement(By.id(&quot;userAgentTextBoxID&quot;));</span>
+<span class="nc" id="L38">        String agent = userAgent.getAttribute(&quot;value&quot;);</span>
+
+<span class="nc" id="L40">        navigator.quit();</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(name.equals(&quot;Microsoft Internet Explorer&quot;)){</span>
+<span class="nc" id="L43">            return &quot;Internet Explorer&quot;;</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        }else if(agent.contains(&quot;Chrome&quot;)){</span>
+<span class="nc" id="L45">            return &quot;Chrome&quot;;</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        }else if(agent.contains(&quot;Firefox&quot;)){</span>
+<span class="nc" id="L47">            return &quot;Firefox&quot;;</span>
+        }else{
+<span class="nc" id="L49">            return &quot;ERROR&quot;;</span>
+        }
+
+    }
+
+
+    /**
+     * Test Executor compatible with Ryan's test.html page that reads the Browser Name and User Agent fields and
+     * returns a String that consists of their concatenated and formatted values.
+     * (test.html @http://pojorisin.github.com/pojorisin/test/test.html)
+     *
+     * @param webDriverType Enum representing the WebDriver instance to be created
+     * @param url URL to the test.html page
+     * @return String of the formatted and concatenated Browser Name and User Agent
+     */
+    public static String getWebBrowserNameAndUserAgent(WebDriverType webDriverType, String url){
+
+<span class="nc" id="L66">        WebNavigator navigator = new WebNavigator(webDriverType);</span>
+<span class="nc" id="L67">        navigator.navigateBrowserTo(url);</span>
+
+<span class="nc" id="L69">        WebElement browserName = navigator.getWebElement(By.id(&quot;browserNameTextBoxID&quot;));</span>
+<span class="nc" id="L70">        String name = browserName.getAttribute(&quot;value&quot;);</span>
+
+<span class="nc" id="L72">        WebElement userAgent = navigator.getWebElement(By.id(&quot;userAgentTextBoxID&quot;));</span>
+<span class="nc" id="L73">        String agent = userAgent.getAttribute(&quot;value&quot;);</span>
+
+<span class="nc" id="L75">        navigator.quit();</span>
+
+<span class="nc" id="L77">        String browserNaneAndUserAgent = &quot;Browser Name: &quot; + name + &quot; - &quot; + &quot;User Agent: &quot; + agent;</span>
+<span class="nc" id="L78">        return browserNaneAndUserAgent;</span>
+    }
+
+
+    /**
+     * Test Executor compatible with Ryan's test.html page that enters the specified text into the test input text
+     * field, clicks a button to transfer the input text to the test result text field, reads the text from the test
+     * result text field and compares it to the input text.
+     * (test.html @http://pojorisin.github.com/pojorisin/test/test.html)
+     *
+     * @param webDriverType Enum representing the WebDriver instance to be created
+     * @param url URL to the test.html page
+     * @param textFieldInput String value to enter into the text field
+     */
+    public static void testTextFieldEntry(WebDriverType webDriverType, String url, String textFieldInput){
+
+<span class="fc" id="L94">        WebNavigator navigator = new WebNavigator(webDriverType);</span>
+<span class="fc" id="L95">        navigator.navigateBrowserTo(url);</span>
+
+<span class="pc bpc" id="L97" title="2 of 4 branches missed.">        assert navigator.setText(By.id(&quot;textFieldTestInputControlID&quot;), textFieldInput);</span>
+
+<span class="pc bpc" id="L99" title="2 of 4 branches missed.">        assert navigator.clickElement(By.id(&quot;textFieldTestProcessButtonID&quot;));</span>
+
+<span class="fc" id="L101">        WebElement element = navigator.getWebElement(By.id(&quot;textFieldTestOutputControlID&quot;));</span>
+<span class="pc bpc" id="L102" title="2 of 4 branches missed.">        assert element.getAttribute(&quot;value&quot;).equals(textFieldInput);</span>
+
+<span class="fc" id="L104">        navigator.quit();</span>
+<span class="fc" id="L105">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.2.201302030002</span></div></body></html>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Duration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PDXSE-GTF (Generic Test Framework)</a> &gt; <a href="index.html" class="el_package">org.pdxse.gtf.utilities</a> &gt; <span class="el_source">Duration.java</span></div><h1>Duration.java</h1><pre class="source lang-java linenums">package org.pdxse.gtf.utilities;
+
+import org.apache.log4j.Logger;
+
+@SuppressWarnings(&quot;unused&quot;)
+public class Duration
+{
+
+<span class="fc" id="L9">    private static final Logger logger = Logger.getLogger(Duration.class);</span>
+
+    private double startTime;
+    private double endTime;
+
+    public Duration()
+    {
+<span class="fc" id="L16">        super();</span>
+<span class="fc" id="L17">        startTime = 0;</span>
+<span class="fc" id="L18">        endTime = 0;</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     *Starts the Duration clock
+     */
+    public void startClock()
+    {
+<span class="fc" id="L26">        startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     *Stops the Duration clock
+     */
+    public void stopClock()
+    {
+<span class="fc" id="L34">        endTime = System.currentTimeMillis();</span>
+<span class="fc" id="L35">    }</span>
+
+    /**
+     * Calculates and returns the calculated Duration in milliseconds as a long
+     *
+     * @return Duration milliseconds as a long value
+     */
+    public long calculateDurationInMilliseconds()
+    {
+<span class="nc" id="L44">        long lEndTime = (long) endTime;</span>
+<span class="nc" id="L45">        long lStartTime = (long) startTime;</span>
+<span class="nc" id="L46">        return lEndTime - lStartTime;</span>
+    }
+
+    /**
+     * Calculates and returns the calculated Duration in milliseconds as a formatted String
+     *
+     * @return Duration milliseconds as a formatted String
+     */
+    public String getCalculatedDurationInMilliseconds()
+    {
+
+<span class="nc" id="L57">        long lEndTime = (long) endTime;</span>
+<span class="nc" id="L58">        long lStartTime = (long) startTime;</span>
+<span class="nc" id="L59">        long duration = lEndTime - lStartTime;</span>
+
+<span class="nc" id="L61">        String milliseconds = new String();</span>
+<span class="nc" id="L62">        milliseconds = String.valueOf(duration) + &quot; milliseconds&quot;;</span>
+<span class="nc" id="L63">        return milliseconds;</span>
+    }
+
+    /**
+     * Calculates and returns the calculated Duration in hours, minutes, second and milliseconds as a formatted String
+     *
+     * @return  Duration hours, minutes, second and milliseconds as a formatted String
+     */
+    public String getCalculatedDuration()
+    {
+
+<span class="fc" id="L74">        String durationString = new String();</span>
+
+<span class="fc" id="L76">        int hours = 0;</span>
+<span class="fc" id="L77">        int minutes = 0;</span>
+<span class="fc" id="L78">        int seconds = 0;</span>
+<span class="fc" id="L79">        double milliseconds = 0;</span>
+
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if ((endTime - startTime) &gt; 0)</span>
+        {
+<span class="fc" id="L83">            double duration = endTime - startTime;</span>
+
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">            if (duration &gt;= 3600000)</span>
+            {
+<span class="nc" id="L87">                hours = (int) duration / 3600000;</span>
+<span class="nc" id="L88">                duration = duration - (hours * 3600000);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                if (hours == 1)</span>
+                {
+<span class="nc" id="L91">                    durationString = durationString + hours + &quot; hour&quot;;</span>
+                }
+                else
+                {
+<span class="nc" id="L95">                    durationString = durationString + hours + &quot; hours&quot;;</span>
+                }
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                if (duration &gt; 0)</span>
+                {
+<span class="nc" id="L100">                    durationString = durationString + &quot; &quot;;</span>
+                }
+            }
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if (duration &gt;= 60000)</span>
+            {
+<span class="nc" id="L105">                minutes = (int) duration / 60000;</span>
+<span class="nc" id="L106">                duration = duration - (minutes * 60000);</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                if (minutes == 1)</span>
+                {
+<span class="nc" id="L109">                    durationString = durationString + minutes + &quot; minute&quot;;</span>
+                }
+                else
+                {
+<span class="nc" id="L113">                    durationString = durationString + minutes + &quot; minutes&quot;;</span>
+                }
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                if (duration &gt; 0)</span>
+                {
+<span class="nc" id="L117">                    durationString = durationString + &quot; &quot;;</span>
+                }
+            }
+<span class="fc bfc" id="L120" title="All 2 branches covered.">            if (duration &gt;= 1000)</span>
+            {
+<span class="fc" id="L122">                seconds = (int) duration / 1000;</span>
+<span class="fc" id="L123">                duration = duration - (seconds * 1000);</span>
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">                if (seconds == 1)</span>
+                {
+<span class="nc" id="L126">                    durationString = durationString + seconds + &quot; second&quot;;</span>
+                }
+                else
+                {
+<span class="fc" id="L130">                    durationString = durationString + seconds + &quot; seconds&quot;;</span>
+                }
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">                if (duration &gt; 0)</span>
+                {
+<span class="fc" id="L134">                    durationString = durationString + &quot; &quot;;</span>
+                }
+            }
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">            if (duration &gt; 0)</span>
+            {
+<span class="fc" id="L139">                milliseconds = duration;</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">                if (milliseconds == 1)</span>
+                {
+<span class="nc" id="L142">                    durationString = durationString + milliseconds + &quot; milisecond&quot;;</span>
+                }
+                else
+                {
+<span class="fc" id="L146">                    durationString = durationString + milliseconds + &quot; milliseconds&quot;;</span>
+                }
+
+            }
+
+<span class="fc" id="L151">        }</span>
+        else
+        {
+<span class="nc" id="L154">            durationString = &quot;0 milliseconds or less&quot;;</span>
+        }
+
+<span class="fc" id="L157">        return durationString;</span>
+    }
+
+    /**
+     * Returns the Duration start time
+     *
+     * @return Duration start time
+     */
+    public double getStartTime()
+    {
+<span class="nc" id="L167">        return startTime;</span>
+    }
+
+    /**
+     *Sets the Duration start time
+     *
+     * @param startTime Duration start time
+     */
+    public void setStartTime(double startTime)
+    {
+<span class="nc" id="L177">        this.startTime = startTime;</span>
+<span class="nc" id="L178">    }</span>
+
+    /**
+     * Returns the Duration end time
+     *
+     * @return Duration end time
+     */
+    public double getEndTime()
+    {
+<span class="nc" id="L187">        return endTime;</span>
+    }
+
+    /**
+     * Sets the Duration end time
+     *
+     * @param endTime Duration end time
+     */
+    public void setEndTime(double endTime)
+    {
+<span class="nc" id="L197">        this.endTime = endTime;</span>
+<span class="nc" id="L198">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.2.201302030002</span></div></body></html>

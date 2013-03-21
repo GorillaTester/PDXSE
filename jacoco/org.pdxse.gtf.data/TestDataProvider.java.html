@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TestDataProvider.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PDXSE-GTF (Generic Test Framework)</a> &gt; <a href="index.html" class="el_package">org.pdxse.gtf.data</a> &gt; <span class="el_source">TestDataProvider.java</span></div><h1>TestDataProvider.java</h1><pre class="source lang-java linenums">package org.pdxse.gtf.data;
+
+import org.apache.log4j.Logger;
+import org.pdxse.gtf.model.WebDriverType;
+import org.testng.annotations.DataProvider;
+
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: ryandavis
+ * Date: 3/17/13
+ * Time: 10:53 AM
+ * To change this template use File | Settings | File Templates.
+ */
+<span class="nc" id="L15">public class TestDataProvider {</span>
+
+<span class="fc" id="L17">    private static final Logger logger = Logger.getLogger(TestDataProvider.class);</span>
+
+
+    /**
+     * 3-record Data Provider that is compatible with both a local grid and the Sauce Labs grid that includes an
+     * instance of the 3 most common Browsers that run on Windows
+     *
+     * @return TestNG DataProvider as two-dimensional Object Array for consumption by a TestNG Test
+     */
+    @DataProvider(parallel = true)
+    public static Object[][] LocalGridDriverSet_003(){
+<span class="fc" id="L28">        return new Object[][]{</span>
+                { 1, WebDriverType.CHROME}, { 2, WebDriverType.FIREFOX}, { 3, WebDriverType.INTERNET_EXPLORER},
+        };
+    }
+
+
+    /**
+     * 100-record Data Provider that is compatible with both a local grid and the Sauce Labs grid that includes an
+     * 33 instances of each of the 3 most common Browsers that run on Windows
+     *
+     * @return TestNG DataProvider as two-dimensional Object Array for consumption by a TestNG Test
+     */
+    @DataProvider(parallel = true)
+    public static Object[][] LocalGridDriverSet_100(){
+<span class="nc" id="L42">        return new Object[][]{</span>
+                { 1, WebDriverType.CHROME}, { 2, WebDriverType.FIREFOX}, { 3, WebDriverType.INTERNET_EXPLORER},
+                { 4, WebDriverType.INTERNET_EXPLORER}, { 5, WebDriverType.FIREFOX}, { 6, WebDriverType.CHROME},
+                { 7, WebDriverType.CHROME}, { 8, WebDriverType.CHROME}, { 9, WebDriverType.CHROME},
+                { 10, WebDriverType.FIREFOX}, { 11, WebDriverType.FIREFOX}, { 12, WebDriverType.FIREFOX},
+                { 13, WebDriverType.INTERNET_EXPLORER}, { 14, WebDriverType.INTERNET_EXPLORER}, { 15, WebDriverType.INTERNET_EXPLORER},
+                { 16, WebDriverType.FIREFOX}, { 17, WebDriverType.CHROME}, { 18, WebDriverType.INTERNET_EXPLORER},
+                { 19, WebDriverType.INTERNET_EXPLORER}, { 20, WebDriverType.CHROME}, { 21, WebDriverType.FIREFOX},
+                { 22, WebDriverType.FIREFOX}, { 23, WebDriverType.FIREFOX}, { 24, WebDriverType.FIREFOX},
+                { 25, WebDriverType.CHROME}, { 26, WebDriverType.CHROME}, { 27, WebDriverType.CHROME},
+                { 28, WebDriverType.INTERNET_EXPLORER}, { 29, WebDriverType.INTERNET_EXPLORER}, { 30, WebDriverType.INTERNET_EXPLORER},
+                { 31, WebDriverType.INTERNET_EXPLORER}, { 32, WebDriverType.CHROME}, { 33, WebDriverType.FIREFOX},
+                { 34, WebDriverType.FIREFOX}, { 35, WebDriverType.CHROME}, { 36, WebDriverType.INTERNET_EXPLORER},
+                { 37, WebDriverType.INTERNET_EXPLORER}, { 38, WebDriverType.INTERNET_EXPLORER}, { 39, WebDriverType.INTERNET_EXPLORER},
+                { 40, WebDriverType.CHROME}, { 41, WebDriverType.CHROME}, { 42, WebDriverType.CHROME},
+                { 43, WebDriverType.FIREFOX}, { 44, WebDriverType.FIREFOX}, { 45, WebDriverType.FIREFOX},
+                { 46, WebDriverType.INTERNET_EXPLORER}, { 47, WebDriverType.FIREFOX}, { 48, WebDriverType.CHROME},
+                { 49, WebDriverType.CHROME}, { 50, WebDriverType.FIREFOX}, { 51, WebDriverType.INTERNET_EXPLORER},
+                { 52, WebDriverType.INTERNET_EXPLORER}, { 53, WebDriverType.INTERNET_EXPLORER}, { 54, WebDriverType.INTERNET_EXPLORER},
+                { 55, WebDriverType.FIREFOX}, { 56, WebDriverType.FIREFOX}, { 57, WebDriverType.FIREFOX},
+                { 58, WebDriverType.CHROME}, { 59, WebDriverType.CHROME}, { 60, WebDriverType.CHROME},
+                { 61, WebDriverType.CHROME}, { 62, WebDriverType.FIREFOX}, { 63, WebDriverType.FIREFOX},
+                { 64, WebDriverType.FIREFOX}, { 65, WebDriverType.FIREFOX}, { 66, WebDriverType.CHROME},
+                { 67, WebDriverType.FIREFOX}, { 68, WebDriverType.CHROME}, { 69, WebDriverType.CHROME},
+                { 70, WebDriverType.CHROME}, { 71, WebDriverType.CHROME}, { 72, WebDriverType.FIREFOX},
+                { 73, WebDriverType.INTERNET_EXPLORER}, { 74, WebDriverType.CHROME}, { 75, WebDriverType.CHROME},
+                { 76, WebDriverType.CHROME}, { 77, WebDriverType.CHROME}, { 78, WebDriverType.INTERNET_EXPLORER},
+                { 79, WebDriverType.INTERNET_EXPLORER}, { 80, WebDriverType.FIREFOX}, { 81, WebDriverType.FIREFOX},
+                { 82, WebDriverType.FIREFOX}, { 83, WebDriverType.FIREFOX}, { 84, WebDriverType.INTERNET_EXPLORER},
+                { 85, WebDriverType.CHROME}, { 86, WebDriverType.FIREFOX}, { 87, WebDriverType.INTERNET_EXPLORER},
+                { 88, WebDriverType.INTERNET_EXPLORER}, { 89, WebDriverType.FIREFOX}, { 90, WebDriverType.CHROME},
+                { 91, WebDriverType.CHROME}, { 92, WebDriverType.CHROME}, { 93, WebDriverType.CHROME},
+                { 94, WebDriverType.FIREFOX}, { 95, WebDriverType.FIREFOX}, { 96, WebDriverType.FIREFOX},
+                { 97, WebDriverType.INTERNET_EXPLORER}, { 98, WebDriverType.INTERNET_EXPLORER}, { 99, WebDriverType.INTERNET_EXPLORER},
+                { 100, WebDriverType.CHROME},
+        };
+    }
+
+
+    /**
+     * Data Provider compatible with the Sauce Labs grid that includes versions of Internet Explorer 6-10
+     *
+     * @return TestNG DataProvider as two-dimensional Object Array for consumption by a TestNG Test
+     */
+    @DataProvider(parallel = true)
+    public static Object[][] HistoricTourOfInternetExplorer(){
+<span class="nc" id="L88">        return new Object[][]{</span>
+                { 1, WebDriverType.IE_6_WIN2003}, { 2, WebDriverType.IE_7_WIN2003}, { 3, WebDriverType.IE_8_WIN2008},
+                { 4, WebDriverType.IE_9_WIN2008}, { 5, WebDriverType.IE_10_WIN2012}
+        };
+    }
+
+
+    /**
+     * Data Provider compatible with the Sauce Labs grid that includes an instance of each Browser that runs on Linux
+     *
+     * @return TestNG DataProvider as two-dimensional Object Array for consumption by a TestNG Test
+     */
+    @DataProvider(parallel = true)
+    public static Object[][] BrowsersOfLinux(){
+<span class="nc" id="L102">        return new Object[][]{</span>
+                { 1, WebDriverType.OPERA_12_LINUX}, { 2, WebDriverType.CHROME_LINUX}, { 3, WebDriverType.ANDROID_4_LINUX},
+                { 4, WebDriverType.FIREFOX_12_LINUX}
+        };
+    }
+
+
+    /**
+     * Data Provider compatible with the Sauce Labs grid that includes an instance of each Browser that runs on a Mac.
+     * !!!WARNING Sauce Labs Mac Minutes cost more than the Windows/Linux Minutes
+     *
+     * @return TestNG DataProvider as two-dimensional Object Array for consumption by a TestNG Test
+     */
+    @DataProvider(parallel = true)
+    public static Object[][] SauceLabsMacMinutesBrowsers(){
+<span class="nc" id="L117">        return new Object[][]{</span>
+                { 1, WebDriverType.IPHONE_6_MAC_10_8}, { 2, WebDriverType.IPAD_6_MAC_10_8}, { 3, WebDriverType.SAFARI_6_MAC_10_8},
+                { 4, WebDriverType.CHROME_MAC_10_8}, { 5, WebDriverType. FIREFOX_19_MAC_10_6}
+        };
+    }
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.2.201302030002</span></div></body></html>

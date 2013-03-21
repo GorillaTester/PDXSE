@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>WebNavigator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PDXSE-GTF (Generic Test Framework)</a> &gt; <a href="index.html" class="el_package">org.pdxse.gtf.web</a> &gt; <span class="el_source">WebNavigator.java</span></div><h1>WebNavigator.java</h1><pre class="source lang-java linenums">package org.pdxse.gtf.web;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.pdxse.gtf.drivers.WebDriverFactory;
+import org.pdxse.gtf.model.WebDriverType;
+import org.pdxse.gtf.utilities.Duration;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: ryandavis
+ * Date: 3/14/13
+ * Time: 5:10 PM
+ * To change this template use File | Settings | File Templates.
+ */
+public class WebNavigator {
+
+<span class="fc" id="L21">    private static final Logger logger = Logger.getLogger(WebNavigator.class);</span>
+
+<span class="pc" id="L23">    private WebDriver webDriver = null;</span>
+
+<span class="nc" id="L25">    public WebNavigator(WebDriver webDriver) {</span>
+<span class="nc" id="L26">        this.webDriver = webDriver;</span>
+<span class="nc" id="L27">    }</span>
+
+    //takes a WebDriverType Enum
+<span class="fc" id="L30">    public WebNavigator(WebDriverType webDriverType) {</span>
+<span class="fc" id="L31">        this.webDriver = WebDriverFactory.getNewWebDriver(webDriverType);</span>
+<span class="fc" id="L32">    }</span>
+
+    public WebDriver getWebDriver() {
+<span class="nc" id="L35">        return webDriver;</span>
+    }
+
+    public void navigateBrowserTo(String url){
+<span class="fc" id="L39">        webDriver.get(url);</span>
+<span class="fc" id="L40">    }</span>
+
+    public void close(){
+<span class="nc" id="L43">        webDriver.close();</span>
+<span class="nc" id="L44">    }</span>
+
+    public void quit(){
+<span class="fc" id="L47">        webDriver.quit();</span>
+<span class="fc" id="L48">    }</span>
+
+
+    public boolean setText(By by, String text){
+<span class="fc" id="L52">        Duration duration = new Duration();</span>
+<span class="fc" id="L53">        duration.startClock();</span>
+
+<span class="fc" id="L55">        WebElement element = null;</span>
+<span class="fc" id="L56">        element = getWebElement(by);</span>
+
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if(element != null){</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">            if(element.isEnabled()){</span>
+                try{
+
+                    // MobileWeb forms use type=&quot;tel&quot; to account for differences
+                    // between text input and numeric input to display the appropriate
+                    // keyboards on the handsets.
+<span class="pc bpc" id="L65" title="3 of 4 branches missed.">                    if (element.getAttribute(&quot;type&quot;).contains(&quot;text&quot;)</span>
+                            || element.getAttribute(&quot;type&quot;).contains(&quot;tel&quot;)) {
+<span class="fc" id="L67">                        element.clear();</span>
+                    }
+<span class="fc" id="L69">                    element.sendKeys(text);</span>
+<span class="fc" id="L70">                    duration.stopClock();</span>
+<span class="fc" id="L71">                    logger.debug(&quot;Method 'setText' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="fc" id="L72">                    return true;</span>
+<span class="nc" id="L73">                }catch (Exception ex){</span>
+<span class="nc" id="L74">                    logger.error(ex);</span>
+<span class="nc" id="L75">                    duration.stopClock();</span>
+<span class="nc" id="L76">                    logger.debug(&quot;Method 'setText' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L77">                    return false;</span>
+                }
+
+            }else{
+<span class="nc" id="L81">                logger.error(&quot;Method 'setText' - WebElement representing the Button Control is Not Enabled&quot;);</span>
+<span class="nc" id="L82">                duration.stopClock();</span>
+<span class="nc" id="L83">                logger.debug(&quot;Method 'setText' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L84">                return false;</span>
+            }
+        }else{
+<span class="nc" id="L87">            logger.error(&quot;Method 'setText' - unable to find the WebElement representing the Button Control&quot; );</span>
+<span class="nc" id="L88">            duration.stopClock();</span>
+<span class="nc" id="L89">            logger.debug(&quot;Method 'setText' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L90">            return false;</span>
+        }
+    }
+
+
+    public boolean clickElement(By by){
+<span class="fc" id="L96">        Duration duration = new Duration();</span>
+<span class="fc" id="L97">        duration.startClock();</span>
+
+<span class="fc" id="L99">        WebElement element = null;</span>
+<span class="fc" id="L100">        element = getWebElement(by);</span>
+
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        if(element != null){</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if(element.isEnabled()){</span>
+                try{
+<span class="fc" id="L105">                    element.click();</span>
+<span class="fc" id="L106">                    duration.stopClock();</span>
+<span class="fc" id="L107">                    logger.debug(&quot;Method 'clickElement' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="fc" id="L108">                    return true;</span>
+<span class="nc" id="L109">                }catch (Exception ex){</span>
+<span class="nc" id="L110">                    logger.error(ex);</span>
+<span class="nc" id="L111">                    duration.stopClock();</span>
+<span class="nc" id="L112">                    logger.debug(&quot;Method 'clickElement' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L113">                    return false;</span>
+                }
+
+            }else{
+<span class="nc" id="L117">                logger.error(&quot;Method 'clickElement' - WebElement representing the Button Control is Not Enabled&quot;);</span>
+<span class="nc" id="L118">                duration.stopClock();</span>
+<span class="nc" id="L119">                logger.debug(&quot;Method 'clickElement' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L120">                return false;</span>
+            }
+        }else{
+<span class="nc" id="L123">            logger.error(&quot;Method 'clickElement' - unable to find the WebElement representing the Button Control&quot;);</span>
+<span class="nc" id="L124">            duration.stopClock();</span>
+<span class="nc" id="L125">            logger.debug(&quot;Method 'clickElement' completed in &quot; + duration.getCalculatedDuration());</span>
+<span class="nc" id="L126">            return false;</span>
+        }
+    }
+
+
+    public WebElement getWebElement(By by)
+    {
+<span class="fc" id="L133">        Duration duration = new Duration();</span>
+<span class="fc" id="L134">        duration.startClock();</span>
+
+<span class="fc" id="L136">        WebElement returnElement = null;</span>
+
+        try
+        {
+<span class="fc" id="L140">            returnElement = webDriver.findElement(by);</span>
+
+<span class="nc" id="L142">        } catch (NoSuchElementException ex)</span>
+        {
+<span class="nc" id="L144">            logger.warn(&quot;No Element Could be Found using \&quot;&quot; + by.toString() + &quot;\&quot;&quot;);</span>
+<span class="fc" id="L145">        }</span>
+
+<span class="fc" id="L147">        duration.stopClock();</span>
+<span class="fc" id="L148">        logger.debug(&quot;Method \&quot;getWebElement\&quot; completed in &quot; + duration.getCalculatedDuration());</span>
+
+<span class="fc" id="L150">        return returnElement;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.2.201302030002</span></div></body></html>

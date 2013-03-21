@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>WebDriverType.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PDXSE-GTF (Generic Test Framework)</a> &gt; <a href="index.html" class="el_package">org.pdxse.gtf.model</a> &gt; <span class="el_source">WebDriverType.java</span></div><h1>WebDriverType.java</h1><pre class="source lang-java linenums">package org.pdxse.gtf.model;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: ryandavis
+ * Date: 3/13/13
+ * Time: 9:35 PM
+ * To change this template use File | Settings | File Templates.
+ */
+<span class="pc" id="L12">public enum WebDriverType {</span>
+
+<span class="fc" id="L14">    CHROME(&quot;Chrome&quot;, &quot;Not Specified&quot;, &quot;Not Specified&quot;, DesiredCapabilities.chrome()),</span>
+<span class="fc" id="L15">    FIREFOX(&quot;Firefox&quot;,&quot;Not Specified&quot;, &quot;Not Specified&quot;, DesiredCapabilities.firefox()),</span>
+<span class="fc" id="L16">    INTERNET_EXPLORER(&quot;Internet Explorer&quot;,&quot;Not Specified&quot;, &quot;Not Specified&quot;, DesiredCapabilities.internetExplorer()),</span>
+<span class="fc" id="L17">    OPERA_12_WIN2008(&quot;Opera&quot;, &quot;12&quot;, &quot;Windows 2008&quot;,  DesiredCapabilities.opera(), new String[][] { {&quot;version&quot;, &quot;12&quot;}, {&quot;platform&quot;, &quot;Windows 2008&quot;} }),</span>
+<span class="fc" id="L18">    SAFARI_5_WIN2008(&quot;Safari&quot;, &quot;5&quot;, &quot;Windows 2008&quot;,  DesiredCapabilities.safari(), new String[][] { {&quot;version&quot;, &quot;5&quot;}, {&quot;platform&quot;, &quot;Windows 2008&quot;} }),</span>
+<span class="fc" id="L19">    IE_6_WIN2003(&quot;Internet Explorer&quot;, &quot;6&quot;, &quot;Windows 2003&quot;, DesiredCapabilities.internetExplorer(), new String[][] { {&quot;version&quot;, &quot;6&quot;}, {&quot;platform&quot;, &quot;Windows 2003&quot;} }),</span>
+<span class="fc" id="L20">    IE_7_WIN2003(&quot;Internet Explorer&quot;, &quot;7&quot;, &quot;Windows 2003&quot;, DesiredCapabilities.internetExplorer(), new String[][] { {&quot;version&quot;, &quot;7&quot;}, {&quot;platform&quot;, &quot;Windows 2003&quot;} }),</span>
+<span class="fc" id="L21">    IE_8_WIN2008(&quot;Internet Explorer&quot;, &quot;8&quot;, &quot;Windows 2008&quot;, DesiredCapabilities.internetExplorer(), new String[][] { {&quot;version&quot;, &quot;8&quot;}, {&quot;platform&quot;, &quot;Windows 2008&quot;} }),</span>
+<span class="fc" id="L22">    IE_9_WIN2008(&quot;Internet Explorer&quot;, &quot;9&quot;, &quot;Windows 2008&quot;, DesiredCapabilities.internetExplorer(), new String[][] { {&quot;version&quot;, &quot;9&quot;}, {&quot;platform&quot;, &quot;Windows 2008&quot;} }),</span>
+<span class="fc" id="L23">    IE_10_WIN2012(&quot;Internet Explorer&quot;, &quot;10&quot;, &quot;Windows 2012&quot;, DesiredCapabilities.internetExplorer(), new String[][] { {&quot;version&quot;, &quot;10&quot;}, {&quot;platform&quot;, &quot;Windows 2012&quot;} }),</span>
+<span class="fc" id="L24">    OPERA_12_LINUX(&quot;Opera&quot;, &quot;12&quot;, &quot;Linux&quot;, DesiredCapabilities.opera(), new String[][] { {&quot;version&quot;, &quot;12&quot;}, {&quot;platform&quot;, &quot;Linux&quot;} }),</span>
+<span class="fc" id="L25">    CHROME_LINUX(&quot;Chrome&quot;, &quot;Current&quot;, &quot;Linux&quot;, DesiredCapabilities.chrome(), new String[][] { {&quot;platform&quot;, &quot;Linux&quot;} }),</span>
+<span class="fc" id="L26">    ANDROID_4_LINUX(&quot;Android&quot;, &quot;4&quot;, &quot;Linux&quot;, DesiredCapabilities.android(), new String[][] { {&quot;version&quot;, &quot;4&quot;}, {&quot;platform&quot;, &quot;Linux&quot;} }),</span>
+<span class="fc" id="L27">    FIREFOX_12_LINUX(&quot;Firefox&quot;, &quot;19&quot;, &quot;Linux&quot;, DesiredCapabilities.firefox(), new String[][] { {&quot;version&quot;, &quot;19&quot;}, {&quot;platform&quot;, &quot;Linux&quot;} }),</span>
+<span class="fc" id="L28">    IPHONE_6_MAC_10_8(&quot;iOS&quot;, &quot;6&quot;, &quot;Mac 10.8&quot;, DesiredCapabilities.iphone(), new String[][] { {&quot;version&quot;, &quot;6&quot;}, {&quot;platform&quot;, &quot;Mac 10.8&quot;} }),</span>
+<span class="fc" id="L29">    IPAD_6_MAC_10_8(&quot;iOS&quot;, &quot;6&quot;, &quot;Mac 10.8&quot;, DesiredCapabilities.ipad(), new String[][] { {&quot;version&quot;, &quot;6&quot;}, {&quot;platform&quot;, &quot;Mac 10.8&quot;} }),</span>
+<span class="fc" id="L30">    SAFARI_6_MAC_10_8(&quot;iOS&quot;, &quot;6&quot;, &quot;Mac 10.8&quot;, DesiredCapabilities.safari(), new String[][] { {&quot;version&quot;, &quot;6&quot;}, {&quot;platform&quot;, &quot;Mac 10.8&quot;} }),</span>
+<span class="fc" id="L31">    CHROME_MAC_10_8(&quot;Chrome&quot;, &quot;6&quot;, &quot;Mac 10.8&quot;, DesiredCapabilities.chrome(), new String[][] { {&quot;platform&quot;, &quot;Mac 10.8&quot;} }),</span>
+<span class="fc" id="L32">    FIREFOX_19_MAC_10_6(&quot;iOS&quot;, &quot;19&quot;, &quot;Mac 10.6&quot;, DesiredCapabilities.firefox(), new String[][] { {&quot;version&quot;, &quot;19&quot;}, {&quot;platform&quot;, &quot;Mac 10.6&quot;} });</span>
+
+
+    private final String driverBrowserName;
+    private final String driverBrowserVersion;
+    private final String driverOS;
+    private final DesiredCapabilities driverCapabilities;
+
+
+    /**
+     * WebDriverType constructor that uses the default DesiredCapabilities
+     *
+     * @param driverBrowserName String representing the Browser name
+     * @param driverBrowserVersion String representing the Browser version
+     * @param driverOS String representing both the OS name and version
+     * @param driverCapabilities browser-specific instance of the DesiredCapabilities interface
+     */
+<span class="fc" id="L49">    private WebDriverType(String driverBrowserName, String driverBrowserVersion, String driverOS, DesiredCapabilities driverCapabilities) {</span>
+<span class="fc" id="L50">        this.driverBrowserName = driverBrowserName;</span>
+<span class="fc" id="L51">        this.driverBrowserVersion = driverBrowserVersion;</span>
+<span class="fc" id="L52">        this.driverOS = driverOS;</span>
+<span class="fc" id="L53">        this.driverCapabilities = driverCapabilities;</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * WebDriverType constructor that configures the DesiredCapabilities options with the key-value pairs passed in as a
+     * 2-dimensional array
+     *
+     * @param driverBrowserName String representing the Browser name
+     * @param driverBrowserVersion String representing the Browser version
+     * @param driverOS String representing both the OS name and version
+     * @param driverCapabilities browser-specific instance of the DesiredCapabilities interface
+     * @param capabilityKeyValuePairs 2-dimensional array of key-value pairs with which to configure the DesiredCapabilities
+     */
+<span class="fc" id="L66">    private WebDriverType(String driverBrowserName, String driverBrowserVersion, String driverOS, DesiredCapabilities driverCapabilities, String[][] capabilityKeyValuePairs) {</span>
+<span class="fc" id="L67">        this.driverBrowserName = driverBrowserName;</span>
+<span class="fc" id="L68">        this.driverBrowserVersion = driverBrowserVersion;</span>
+<span class="fc" id="L69">        this.driverOS = driverOS;</span>
+<span class="fc" id="L70">        this.driverCapabilities = driverCapabilities;</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for(String[] row : capabilityKeyValuePairs){</span>
+
+<span class="fc" id="L74">            this.driverCapabilities.setCapability(row[0], row[1]);</span>
+        }
+<span class="fc" id="L76">    }</span>
+
+
+    /**
+     * Returns the Browser Name of the WebBrowserType
+     *
+     * @return Browser Name of the WebBrowserType
+     */
+    public String getDriverBrowserName() {
+<span class="fc" id="L85">        return driverBrowserName;</span>
+    }
+
+    /**
+     * Returns the Browser Version of the WebBrowserType
+     *
+     * @return Browser Version of the WebBrowserType
+     */
+    public String getDriverBrowserVersion() {
+<span class="nc" id="L94">        return driverBrowserVersion;</span>
+    }
+
+    /**
+     * Returns the OS and OS Version of the WebBrowserType
+     *
+     * @return OS and OS Version of the WebBrowserType
+     */
+    public String getDriverOS() {
+<span class="nc" id="L103">        return driverOS;</span>
+    }
+
+    /**
+     * Return the DesiredCapabilities of the WebBrowserType
+     *
+     * @return DesiredCapabilities of the WebBrowserType
+     */
+    public DesiredCapabilities getDriverCapabilities() {
+<span class="fc" id="L112">        return driverCapabilities;</span>
+    }
+
+<span class="fc" id="L115">    private static final Logger logger = Logger.getLogger(WebDriverType.class);</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.2.201302030002</span></div></body></html>
