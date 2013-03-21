@@ -1,0 +1,154 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <!--M A I N   A P P E N D E R S-->
+    <appender name="TestDataProvider" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/TestDataProvider.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebDriverFactory" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/WebDriverFactory.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebDriverType" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/WebDriverType.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebTestExecutor" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/WebTestExecutor.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="Duration" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/Duration.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebNavigator" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="WARN"/>
+        <param name="File" value="logs/WebNavigator.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="INFO"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{HH:mm:ss} %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+    <appender name="error" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="ERROR"/>
+        <param name="File" value="logs/error.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="root" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/root.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!--T E S T   A P P E N D E R S-->
+    <appender name="GridLoadTest" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/test/GridLoadTest.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebBrowserTypeTest" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/test/WebBrowserTypeTest.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="WebTextFieldTest" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="File" value="logs/test/WebTextFieldTest.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="test_error" class="org.apache.log4j.FileAppender">
+        <param name="Threshold" value="ERROR"/>
+        <param name="File" value="logs/test/error.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!--M A I N   L O G G E R S-->
+    <logger name="org.pdxse.gtf.data.TestDataProvider" additivity="true">
+        <appender-ref ref="TestDataProvider"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.drivers.WebDriverFactory" additivity="true">
+        <appender-ref ref="WebDriverFactory"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.model.WebDriverType" additivity="true">
+        <appender-ref ref="WebDriverType"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.test.WebTestExecutor" additivity="true">
+        <appender-ref ref="WebTestExecutor"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.utilities.Duration" additivity="true">
+        <appender-ref ref="Duration"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.web.WebNavigator" additivity="true">
+        <appender-ref ref="WebNavigator"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </logger>
+
+    <!--T E S T   L O G G E R S-->
+    <logger name="org.pdxse.gtf.GridLoadTest" additivity="true">
+        <appender-ref ref="GridLoadTest"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="test_error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.WebBrowserTypeTest" additivity="true">
+        <appender-ref ref="WebBrowserTypeTest"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="test_error"/>
+    </logger>
+    <logger name="org.pdxse.gtf.WebTextFieldTest" additivity="true">
+        <appender-ref ref="WebTextFieldTest"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="test_error"/>
+    </logger>
+
+    <!--R O O T-->
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="root"/>
+    </root>
+
+</log4j:configuration>
